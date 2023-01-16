@@ -9,9 +9,9 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ### description
 This is a backend project for a service order system. It uses the following technologies:
-JavaScript
-Node.js
-Express.js for routing
+JavaScript,
+Node.js,
+Express.js for routing,
 MongoDB as the database
 
 The project includes multiple API routes for handling service and order related requests. The service routes allow for creating, reading, while the order routes allow for creating, reading, updating and deleting orders. The project also has a catch-all route for handling requests that do not match any defined routes, which will return a 404 response.
