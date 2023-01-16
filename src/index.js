@@ -19,6 +19,6 @@ mongoose
 app.use("/", route); //Using the imported routing file for handling routes starting with "/"
 
 //Starting the Express application to listen on a port specified by the process.env.PORT environment variable or port 3000 if it's not specified
-app.listen(process.env.PORT || 3000, function () {
-  console.log("Express app is running on " + (process.env.PORT || 3000));
+app.listen(process.env.PORT || 3001, function () {
+  console.log("Express app is running");
 });

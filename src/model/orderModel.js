@@ -7,6 +7,10 @@ const orderSchema = new mongoose.Schema(
       required: true,
       default: 100,
     },
+    dateTime: {
+      type: Date,
+      default: Date.now,
+    },
     address:{
       type: String,
       required: true,

@@ -28,6 +28,19 @@ const createOrder = async (req, res) => {
         .status(404)
         .send({ status: false, message: "No such as services Found" });
     }
+
+    //Check if an order for the same service has been placed within the past 3 hours
+    const threeHoursAgo = new Date(Date.now() - 3 * 60 * 60 * 1000);
+    const existingOrder = await orderModel.findOne({
+      services: services,
+      dateTime: { $gte: threeHoursAgo }
+    });
+    if (existingOrder) {
+      return res
+        .status(400)
+        .send({ status: false, message: "An order for this service has already been placed within the past 3 hours" });
+    }
+
     //Address validation
     if (!address || address.trim().length == 0) {
       return res
@@ -150,6 +163,18 @@ const updateOrder = async function (req, res) {
         message: "Order Not Available",
       });
     }
+    //Check if an order for the same service has been updated within the past 3 hours
+    const threeHoursAgo = new Date(Date.now() - 3 * 60 * 60 * 1000);
+    const existingOrder = await orderModel.findOne({
+      _id: orderId,
+      dateTime: { $gte: threeHoursAgo }
+    });
+    if (existingOrder) {
+      return res
+        .status(400)
+        .send({ status: false, message: "An order for this service has already been updated within the past 3 hours" });
+    }
+    
     //Address validation
     if (!updateAddress || updateAddress.trim().length == 0) {
       return res
