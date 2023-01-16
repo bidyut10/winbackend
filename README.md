@@ -66,6 +66,7 @@ This route is used to retrieve a list of all services. It does not require any r
   address: {string, mandatory},
   orderStatus: {string, default: 'completed', enum[completed, cancled]},
   totalFee: {number, mandatory, default: 100},
+  dateTime: {date},
   createdAt: {timestamp},
   updatedAt: {timestamp},
 }
@@ -97,6 +98,7 @@ This route is used to delete an existing order. It requires the order ID as a pa
   address: "Bishnupur",
   services: [ ObjectId("88abc190e45588abc190ef88") ],
   orderStatus: "completed",
+  dateTime: "2021-09-17T04:25:07.803Z",
   createdAt: "2021-09-17T04:25:07.803Z",
   updatedAt: "2021-09-17T04:25:07.803Z",
 }
